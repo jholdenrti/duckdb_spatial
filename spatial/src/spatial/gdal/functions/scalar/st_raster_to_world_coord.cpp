@@ -35,7 +35,7 @@ static void RasterRasterToWorldCoordFunction(DataChunk &args, ExpressionState &s
 		    auto row = p3.val;
 		    Raster raster(reinterpret_cast<GDALDataset *>(input));
 
-		    PointXY coord(0, 0);
+		    PointXY<double> coord(0, 0);
 		    if (!raster.RasterToWorldCoord(coord, col, row)) {
 			    throw InternalException("Could not compute geotransform matrix");
 		    }
@@ -50,7 +50,7 @@ static void RasterRasterToWorldCoordXFunction(DataChunk &args, ExpressionState &
 	    args.data[0], args.data[1], args.data[2], result, args.size(), [&](uintptr_t input, int32_t col, int32_t row) {
 		    Raster raster(reinterpret_cast<GDALDataset *>(input));
 
-		    PointXY coord(0, 0);
+		    PointXY<double> coord(0, 0);
 		    if (!raster.RasterToWorldCoord(coord, col, row)) {
 			    throw InternalException("Could not compute geotransform matrix");
 		    }
@@ -65,7 +65,7 @@ static void RasterRasterToWorldCoordYFunction(DataChunk &args, ExpressionState &
 	    args.data[0], args.data[1], args.data[2], result, args.size(), [&](uintptr_t input, int32_t col, int32_t row) {
 		    Raster raster(reinterpret_cast<GDALDataset *>(input));
 
-		    PointXY coord(0, 0);
+		    PointXY<double> coord(0, 0);
 		    if (!raster.RasterToWorldCoord(coord, col, row)) {
 			    throw InternalException("Could not compute geotransform matrix");
 		    }

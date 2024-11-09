@@ -4,6 +4,7 @@
 #include "spatial/core/geometry/geometry.hpp"
 #include "spatial/core/geometry/geometry_type.hpp"
 #include "spatial/gdal/types.hpp"
+#include "spatial/core/geometry/vertex.hpp"
 
 class GDALDataset;
 
@@ -51,7 +52,7 @@ public:
 	Geometry GetGeometry(ArenaAllocator &allocator) const;
 
 	//! Returns the geometric X and Y (longitude and latitude) given a column and row
-	bool RasterToWorldCoord(PointXY &point, int32_t col, int32_t row) const;
+	bool RasterToWorldCoord(PointXY<double> &point, int32_t col, int32_t row) const;
 
 	//! Returns the upper left corner as column and row given geometric X and Y
 	bool WorldToRasterCoord(RasterCoord &coord, double x, double y) const;
@@ -61,7 +62,7 @@ public:
 
 public:
 	//! Returns the geometric X and Y (longitude and latitude) given a column and row
-	static bool RasterToWorldCoord(PointXY &point, double matrix[], int32_t col, int32_t row);
+	static bool RasterToWorldCoord(PointXY<double> &point, double matrix[], int32_t col, int32_t row);
 
 	//! Returns the upper left corner as column and row given geometric X and Y
 	static bool WorldToRasterCoord(RasterCoord &coord, double inv_matrix[], double x, double y);
